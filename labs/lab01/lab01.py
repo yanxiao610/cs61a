@@ -8,15 +8,17 @@ def digit(n, k):
     >>> digit(3579, 10)
     0
     """
+
+    '''
     sum = 0
     nn = n
     while nn != 0:
         nn //= 10
-        sum += 1
+        sum += 1 # 获取这个数字一共有几位
     if k >= sum:
-        final = 0
+        final = 0 # 如果左移的位数大于拥有的位数
     elif k==0:
-        final = n % 10
+        final = n % 10 # 如果左移0位
     else:
         position = sum - k + 1
         while position:
@@ -27,6 +29,10 @@ def digit(n, k):
                 n //= 10
                 position -= 1
     return final
+    这段代码逻辑是错误的
+    '''
+    return (n // pow(10,k)) % 10 # 现在只用一行就可以实现了
+    # 移动几位就强除10的几次方,之后再取余
 
 
 def middle(a, b, c):
@@ -120,9 +126,9 @@ def sum_digits(y):
     """
     "*** YOUR CODE HERE ***"
     sum = 0
-    while n != 0:
-        sum += n % 10
-        n = n // 10
+    while y != 0:
+        sum += y % 10
+        y = y // 10
     return sum
 
 def double_eights(n):
