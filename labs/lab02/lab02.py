@@ -22,6 +22,7 @@ def composite_identity(f, g):
     return composite
 
 
+
 def sum_digits(y):
     """Return the sum of the digits of non-negative integer y."""
     total = 0
@@ -66,10 +67,11 @@ def count_cond(condition):
     8
     """
     "*** YOUR CODE HERE ***"
+    # 上面二者的函数实现太过相似,使用高阶函数,新定义一个函数用来接收n
     def circle(n):
         sum = 0
         for i in range(1,n + 1):
-            if condition(n,i):
+            if condition(n,i): # condition是返回True或者False如果符合要求
                 sum += 1
         return sum
     return circle
@@ -84,11 +86,12 @@ def multiple(a, b):
     42
     """
     "*** YOUR CODE HERE ***"
-    mmax = max(a,b)
-    while mmax % a != 0 or mmax % b != 0:
-        mmax += 1
-    return mmax
-
+    sum = a * b
+    def gcd(a,b):
+        while(b != 0):
+            a , b = b , a % b
+        return sum // a
+    return gcd(a,b)
 
 def cycle(f1, f2, f3):
     """Returns a function that is itself a higher-order function.
