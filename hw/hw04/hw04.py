@@ -45,9 +45,16 @@ def deep_map(f, s):
     True
     """
     "*** YOUR CODE HERE ***"
+    '''
+        首先遍历一个list,如果这个list中元素不是list的话就直接进行 f 操作
+        反之继续遍历,直至元素不是list
+        还有要注意的点就是 因为要修改list
+        所以这里只能使用for i in
+        而不能使用 for x in s ,这种只会生成副本
+    '''
     def helper(s):
         for i in range(len(s)):
-            if (type(s[i]) == list) is False:
+            if (type(s[i]) != list) :# 核心
                 s[i] = f(s[i])
             else:
                 helper(s[i])
